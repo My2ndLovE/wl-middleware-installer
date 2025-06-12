@@ -1,24 +1,39 @@
 # 🍷 Wine Cellar Monitoring System - Installer
 
-One-click installation script for setting up the Wine Cellar Monitoring System on Raspberry Pi.
+<div align="center">
 
-## Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi-red.svg)](https://www.raspberrypi.org/)
+[![OS](https://img.shields.io/badge/OS-Raspberry%20Pi%20OS-green.svg)](https://www.raspberrypi.com/software/)
 
-- ✅ Automated installation in ~30-45 minutes
-- ✅ Support for both public and private repositories  
-- ✅ Automatic system configuration
-- ✅ Service setup with auto-start
-- ✅ Health monitoring and auto-recovery
-- ✅ Security hardening included
-- ✅ Post-installation documentation
+**One-click installation script for setting up the Wine Cellar Monitoring System on Raspberry Pi**
 
-## Quick Start
+</div>
 
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🚀 **Quick Setup** | Automated installation in ~30-45 minutes |
+| 🔐 **Flexible Auth** | Support for both public and private repositories |
+| ⚙️ **Auto Config** | Automatic system configuration |
+| 🔄 **Service Management** | Service setup with auto-start |
+| 💪 **Health Monitoring** | Health monitoring and auto-recovery |
+| 🛡️ **Security** | Security hardening included |
+| 📚 **Documentation** | Post-installation documentation |
+
+## 🚀 Quick Start
+
+### Option 1: One-line Installation
 ```bash
-# One-line installation
 curl -fsSL https://raw.githubusercontent.com/My2ndLovE/wl-middleware-installer/main/web-install.sh | bash
-Or manually:
-bash# Clone the installer
+```
+
+### Option 2: Manual Installation
+```bash
+# Clone the installer
 git clone https://github.com/My2ndLovE/wl-middleware-installer.git
 cd wl-middleware-installer
 
@@ -28,16 +43,52 @@ nano installer-config.sh
 
 # Run installation
 ./quick-install.sh
-Requirements
+```
 
-Raspberry Pi 4 (4GB+ RAM recommended)
-Raspberry Pi OS 64-bit (Bullseye or newer)
-Internet connection
-TP-Link Tapo account with devices
+## 📋 Requirements
 
-Configuration
-Edit installer-config.sh with your settings:
-bash# Required
+- 🖥️ **Raspberry Pi 4** (4GB+ RAM recommended)
+- 💽 **Raspberry Pi OS 64-bit** (Bullseye or newer)
+- 🌐 **Internet connection**
+- 📱 **TP-Link Tapo account** with devices
+
+## 🌐 Configure Static IP (Recommended)
+
+Setting up a static IP ensures your Wine Cellar Monitoring System is always accessible at the same address.
+
+### Edit the dhcpcd configuration:
+```bash
+sudo nano /etc/dhcpcd.conf
+```
+
+### Add these lines at the end:
+```bash
+# For Ethernet connection
+interface eth0
+static ip_address=192.168.0.118/24
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1 8.8.8.8
+
+# For WiFi use wlan0 instead:
+# interface wlan0
+# static ip_address=192.168.0.118/24
+# static routers=192.168.0.1
+# static domain_name_servers=192.168.0.1 8.8.8.8
+```
+
+### Reboot to apply changes:
+```bash
+sudo reboot
+```
+
+> **💡 Note:** Adjust the IP address (`192.168.0.118`) and gateway (`192.168.0.1`) according to your network configuration.
+
+## ⚙️ Configuration
+
+Edit `installer-config.sh` with your settings:
+
+```bash
+# Required settings
 GITHUB_REPO="https://github.com/your-username/tapo-middleware.git"
 TAPO_USERNAME="your-email@example.com"
 TAPO_PASSWORD="your-password"
@@ -46,29 +97,39 @@ TAPO_PASSWORD="your-password"
 GITHUB_TOKEN="ghp_your_token_here"
 # OR
 DEPLOY_KEY_PATH="/home/pi/.ssh/wine_cellar_deploy"
-GitHub Authentication
-Personal Access Token (Simple)
+```
 
-Go to GitHub Settings > Tokens
-Generate new token (classic) with repo scope
-Add to installer-config.sh
+## 🔐 GitHub Authentication
 
-Deploy Key (Secure)
+### 🎫 Personal Access Token (Simple)
 
-Run: ./scripts/generate-deploy-key.sh
-Follow the interactive guide
-Add public key to your GitHub repo
+1. Go to [GitHub Settings > Tokens](https://github.com/settings/tokens)
+2. Generate new token (classic) with `repo` scope
+3. Add to `installer-config.sh`
 
-Documentation
+### 🔑 Deploy Key (Secure)
 
-Installation Guide
-Authentication Guide
-Troubleshooting
+1. Run: `./scripts/generate-deploy-key.sh`
+2. Follow the interactive guide
+3. Add public key to your GitHub repo
 
-Support
+## 📖 Documentation
 
-Issues: Report a bug
-Main Project: Wine Cellar Middleware
+- 📋 [Installation Guide](docs/installation.md)
+- 🔐 [Authentication Guide](docs/authentication.md)
+- 🔧 [Troubleshooting](docs/troubleshooting.md)
 
-License
-MIT License - See LICENSE file
+## 🆘 Support
+
+- 🐛 **Issues**: [Report a bug](https://github.com/My2ndLovE/wl-middleware-installer/issues)
+- 🍷 **Main Project**: [Wine Cellar Middleware](https://github.com/My2ndLovE/tapo-middleware)
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) file
+
+---
+
+<div align="center">
+Made with ❤️ for wine enthusiasts
+</div>

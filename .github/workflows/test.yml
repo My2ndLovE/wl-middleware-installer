@@ -1,0 +1,33 @@
+name: Test Installer Scripts
+on:
+push:
+branches: [ main ]
+pull_request:
+branches: [ main ]
+jobs:
+shellcheck:
+name: ShellCheck
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+- name: Run ShellCheck
+  uses: ludeeus/action-shellcheck@master
+  with:
+    scandir: '.'
+    ignore_paths: >-
+      examples
+      docs
+    severity: warning
+test-scripts:
+name: Test Scripts Syntax
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+- name: Test bash syntax
+  run: |
+    for script in *.sh scripts/*.sh; do
+      if [ -f "$script" ]; then
+        echo "Checking $script..."
+        bash -n "$script"
+      fi
+    done

@@ -1,0 +1,42 @@
+User Configuration Files (contain credentials)
+installer-config.sh
+config.sh
+*.config.sh
+SSH Keys and Authentication
+.pem
+.key
+.pub
+id_rsa
+id_ed25519
+deploy_key
+.ssh/
+Backup files
+*.backup
+*.bak
+*.old
+*~
+Log files
+*.log
+logs/
+Temporary files
+.tmp
+.temp
+..swp
+..swo
+OS Files
+.DS_Store
+Thumbs.db
+Editor directories
+.vscode/
+.idea/
+.sublime-
+Test installations
+wine-cellar-install/
+test-install/
+tapo-middleware/
+Archive files
+*.tar.gz
+*.zip
+*.tar
+Keep example configurations
+!examples/*.sh

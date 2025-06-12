@@ -13,6 +13,7 @@ INSTALLER_BRANCH="${INSTALLER_BRANCH:-main}"
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+RED='\033[0;31m'
 NC='\033[0m'
 
 clear
@@ -54,7 +55,7 @@ for cmd in curl tar git; do
 done
 
 # Create working directory
-INSTALL_DIR="wine-cellar-installer-${INSTALLER_BRANCH}"
+INSTALL_DIR="wl-middleware-installer-${INSTALLER_BRANCH}"
 if [ -d "$INSTALL_DIR" ]; then
     echo -e "${YELLOW}Previous installation found. Creating backup...${NC}"
     mv "$INSTALL_DIR" "${INSTALL_DIR}-backup-$(date +%s)"

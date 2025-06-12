@@ -1,42 +1,26 @@
-#!/bin/bash
-# Wine Cellar Monitoring System - One-Click Installer
-# Version: 2.0
-# Compatible with: Raspberry Pi OS 64-bit (Bullseye/Bookworm)
-
-set -e  # Exit on error
-
 # ==============================================================================
-# CONFIGURATION SECTION - MODIFY THESE VARIABLES
+# CONFIGURATION SECTION - THESE SHOULD BE SET BY installer-config.sh
 # ==============================================================================
 
 # Git Repository Configuration
-GITHUB_REPO="https://github.com/your-username/tapo-middleware.git"
-GITHUB_BRANCH="v2-simplification"  # or "main"
-
-# GitHub Authentication (for private repos)
-# Option 1: Personal Access Token (recommended)
-# Create at: https://github.com/settings/tokens
-GITHUB_TOKEN=""  # Leave empty for public repos
-
-# Option 2: Deploy Key (alternative method)
-# Add to: https://github.com/YOUR_USERNAME/REPO_NAME/settings/keys
-DEPLOY_KEY_PATH=""  # Path to SSH private key file
+GITHUB_REPO="${GITHUB_REPO:-}"
+GITHUB_BRANCH="${GITHUB_BRANCH:-main}"
+GITHUB_TOKEN="${GITHUB_TOKEN:-}"
+DEPLOY_KEY_PATH="${DEPLOY_KEY_PATH:-}"
 
 # Tapo Account Credentials
-TAPO_USERNAME="your_tapo_email@example.com"
-TAPO_PASSWORD="your_tapo_password"
+TAPO_USERNAME="${TAPO_USERNAME:-}"
+TAPO_PASSWORD="${TAPO_PASSWORD:-}"
 
 # System Configuration
-PI_USERNAME="wladmin"  # Username for the Pi
-CLIENT_ID="wine-cellar-001"  # Unique identifier for this installation
-TIMEZONE="America/New_York"  # Your timezone
-API_SECRET="wine-cellar-secret-key-change-this-$(date +%s)"  # Auto-generated secret
+PI_USERNAME="${PI_USERNAME:-wladmin}"
+CLIENT_ID="${CLIENT_ID:-wine-cellar-001}"
+TIMEZONE="${TIMEZONE:-Asia/Kuala_Lumpur}"
+API_SECRET="${API_SECRET:-wine-cellar-secret-key-change-this-$(date +%s)}"
 
 # Network Configuration
-ALLOWED_NETWORK="192.168.0.0/24"  # Network range that can access the API
-
-# Optional Email for Alerts (leave empty if not needed)
-ALERT_EMAIL=""
+ALLOWED_NETWORK="${ALLOWED_NETWORK:-192.168.0.0/24}"
+ALERT_EMAIL="${ALERT_EMAIL:-}"
 
 # ==============================================================================
 # COLOR CODES FOR OUTPUT
